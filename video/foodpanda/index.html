@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food panda animation</title>
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <style>
+    *{padding:0;margin:0;-webkit-user-select:none;-ms-user-select:none;user-select:none}
+    video::-webkit-media-controls {
+      display: none;
+    }
+
+    .hidden{
+      display: none;
+    }
+    .istation_wrapper *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .istation_wrapper {
+        position: relative;
+        width: 300px;
+        height: 250px;
+    }
+    .video_wrapper{
+      width: 300px;
+      height: 200px;
+    }
+    .video_wrapper {
+    position: relative;
+}
+
+.audio_control {
+    position: absolute;
+    right: 7px;
+    bottom: 40px;
+    color: #fff;
+    background: #FF2B85;
+    width: 35px;
+    height: 33px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+    video{
+      object-fit: fill;
+    }
+    img{
+      overflow: hidden;
+      object-fit: contain;
+    }
+    .image1, .image2{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    @font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2") format('woff2');
+}
+
+@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url("https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2") format('woff2')}.material-icons{font-family:'Material Icons';font-weight:400;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased}
+   
+  </style>
+</head>
+<body>
+
+  <div class="istation_wrapper">
+    <div class="video_wrapper">
+      <video class="videoAd" width="300" height="169" autoplay loop muted>
+        <source src="6922-1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="audio_control" data-audio="mute" onclick="myFunction()"><i class="material-icons">volume_off</i></div>
+    </div>
+    <img src="1.jpg" class="animate__animated hidden image1" alt="">
+    <img src="2.jpg" class="animate__animated hidden image2" alt="">
+    
+  </div>
+
+  <script>
+
+        
+        let videoAd = document.querySelector(".videoAd");
+        let slide1 = document.querySelector(".image1");
+        let slide2 = document.querySelector(".image2");
+      function myFunction() {
+        let audioControl = document.querySelector(".audio_control");
+        let audio = audioControl.getAttribute('data-audio');
+        if (audio === "mute") {
+          audioControl.innerHTML = '<i class="material-icons">volume_up</i>';
+          videoAd.muted = false;
+          audioControl.setAttribute('data-audio', 'unmute');
+        }
+
+        if (audio === "unmute") {
+          audioControl.innerHTML = '<i class="material-icons">volume_off</i>';
+          videoAd.muted = true;
+          audioControl.setAttribute('data-audio', 'mute');
+        }
+
+      }
+      
+
+      remove_class(slide1, "hidden", "animate__fadeIn");
+      let check = true;
+      setInterval(function(){
+        if(check){
+          check = false;
+          remove_class(slide1, "animate__fadeIn", "animate__fadeOut");
+          remove_class(slide2, "animate__fadeOut", "animate__fadeIn")
+          remove_class(slide2, "hidden");
+        }else{
+          check = true;
+          remove_class(slide2, "animate__fadeIn");
+          add_class(slide2, "animate__fadeOut");
+
+          remove_class(slide1, "animate__fadeOut", "animate__fadeIn");
+        }
+       
+
+      }, 3000);
+      
+        /*add and remove class function*/
+        function remove_class(element, classname,newclass='') {
+            element.className = element.className.replace(classname, newclass);
+        }
+        function add_class(element, classname) {
+            element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+        }
+
+  </script>
+</body>
+</html>

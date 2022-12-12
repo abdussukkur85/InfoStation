@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Default Banner infostation</title>
+        <meta name="ad.size" content="width=728,height=90">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <script src="https://abdussukkur85.github.io/InfoStation/video/info-station/jquery.min.js"></script>
+        <script>!function(a){a(jQuery)}(function($){$.fn.lMCarousel=function(d){var n,g,h,b,o,i={width:d.width||728,height:d.height||90,slides:[],slideLayout:"fill",perspective:3000,animation:"slide3D",animationCurve:"ease",animationDuration:1000,animationInterval:3000,autoplay:!0,controls:!0,slideClass:"slide",navigation:"circles",rotationDirection:"rtl",onSlideShow:function(){}},a=$.extend(!0,{},i,d),c=this,e=a.width,j=a.height;a.width,a.height;var k=$("<div class='lMCarousel' />").css({width:"100%",height:"100%",transition:"transform "+a.animationDuration+"ms "+a.animationCurve,transformStyle:"preserve-3d"}).appendTo(c);new m;var p=0,f=a.slides.length||c.find("."+a.slideClass).length;function l(){(n=q()[0].querySelector("video"))&&(n.currentTime=0,n.play(),n.addEventListener("ended",l))}function q(){return k.find("."+a.slideClass).eq(0%f)}function m(){this.animations={slide3D:r}}function r(a){c.css({perspective:b,overflow:"visible"}),p=g*a,k.css({transform:"translateZ("+ -h+"px) rotateY("+ -p+"deg)"})}return -1!=a.animation.indexOf("slide")&&(h=e/2/Math.tan(Math.PI/f),b=e/2*Math.tan(2*Math.PI/f)+"px"),g=360/f,c.find("."+a.slideClass).each(function(c){var b=$(this).attr("data-index",c);-1!=a.animation.indexOf("slide")&&(o="rotateY("+g*c+"deg) translateZ("+h+"px)"),b=b.css({transform:o}).detach(),k.append(b)}),k.find("."+a.slideClass).css({position:"absolute",left:0,top:0,width:"100%",height:"100%",backfaceVisibility:"hidden"}).find("img").css({width:"100%",height:"100%",objectFit:a.slideLayout}),b=a.perspective||b,c.css({perspective:b,width:e+"px",height:j+"px",position:"relative",overflow:"visible"}),a.autoplay&&l(),m.prototype.run=function(a,b){this.animations[a](b)},this}})</script>
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+        <style>*{padding:0;margin:0;-webkit-user-select:none;-ms-user-select:none;user-select:none}#container{width:728px;height:90px;top:0;left:0;perspective:1500px;overflow:hidden;cursor:pointer;}.slide{overflow:hidden}.slide img{position:absolute;top:0;left:0}.slide .right_woman{left:46px}.slide .left_man{left:auto;right:25px}.navigation{display:none}.controls{top:27%!important;opacity:0}#invis{width:728px;height:200px;background-color:brown;position:absolute;top:0;opacity:0}#video{width:728px;height:90px;left:0;position:relative}.video-controls{top:5px;position:absolute;right:10px;z-index:999;}.toggle{background:0 0;color:#fff;border:none;outline:0}</style>
+    </head>
+    <body>  
+        <div id="container">
+            <div class="cube_templete">
+                <div class="slide">
+                    <div id="video-player" class="video-wrapper">
+                        <video id="video" playsinline autoplay muted playsinline>
+                            <source src="https://abdussukkur85.github.io/InfoStation/video/info-station/72890.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-controls">
+                            <button id="toggle" class="btn toggle"><i class="material-icons">play_arrow</i></button>
+                        </div>
+                    </div>
+                    <a href="https://www.facebook.com/InfoStationDigital/" target="_blank">
+                        <div id="invis"></div>
+                    </a>                
+                </div>  
+                <div class="slide">
+                    <img src="https://infostation.digital/assets/landing/media/infodashlogo.png" alt="">
+                </div>                        
+            </div>
+        </div>
+        <script>
+            $('.cube_templete').lMCarousel({width:728,height:90});
+            var video = $('#video-player #video');
+            var playIcon = `<i class="material-icons">play_arrow</i>`;
+            var pauseIcon = `<i class="material-icons">pause</i>`;
+
+            $('#video-player #toggle').click(function(e){
+                (video.get(0).paused) ? video.get(0).play() : video.get(0).pause();
+            });
+            video.on("pause", function (e) {
+                $('#video-player #toggle').html(playIcon);
+            });
+            video.on("play", function (e) {
+                $('#video-player #toggle').html(pauseIcon);
+            });
+        </script>
+    </body>
+</html>

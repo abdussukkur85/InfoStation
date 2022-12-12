@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Video by Info Station </title>
+    <meta name="author" content="Info Station" />
+    <meta name="ad.size" content="width=300,height=250" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="//showcase.infostation.digital/video/hero-dec-21/jquery.min.js"></script>
+    <script>
+      var _timer;!function(i){var t;(t=jQuery).fn.lMCarousel=function(i){var e,n,s,a,o,l=t.extend(!0,{},{width:300,height:250,slides:[],slideLayout:"fill",perspective:3e3,animation:"slide3D",animationCurve:"ease",animationDuration:1e3,animationInterval:3e3,autoplay:!0,controls:!0,slideClass:"slide",navigation:"circles",rotationDirection:"rtl",onSlideShow:function(){}},i),r=this,d=l.width,h=l.height,c=(l.width,l.height,t("<div class='lMCarousel' />").css({width:"100%",height:"100%",transition:"transform "+l.animationDuration+"ms "+l.animationCurve,transformStyle:"preserve-3d"}).appendTo(r)),p=0,f=(new m,0),u=l.slides.length||r.find("."+l.slideClass).length;function v(){(e=c.find("."+l.slideClass).eq(p%u)[0].querySelector("video"))&&(e.currentTime=0,e.play(),e.addEventListener("ended",v))}function m(){this.animations={slide3D:g}}function g(i){console.log("_slide3D"),r.css({perspective:a,overflow:"visible"}),f=n*i,c.css({transform:"translateZ("+-s+"px) rotateY("+-f+"deg)"})}return-1!=l.animation.indexOf("slide")&&(s=d/2/Math.tan(Math.PI/u),a=d/2*Math.tan(2*Math.PI/u)+"px"),n=360/u,r.find("."+l.slideClass).each(function(i){var e=t(this).attr("data-index",i);-1!=l.animation.indexOf("slide")&&(o="rotateY("+n*i+"deg) translateZ("+s+"px)"),e=e.css({transform:o}).detach(),c.append(e)}),c.find("."+l.slideClass).css({position:"absolute",left:0,top:0,width:"100%",height:"100%",backfaceVisibility:"hidden"}).find("img").css({width:"100%",height:"100%",objectFit:l.slideLayout}),a=l.perspective||a,r.css({perspective:a,width:d+"px",height:h+"px",position:"relative",overflow:"visible"}),l.autoplay&&v(),m.prototype.run=function(i,t){this.animations[i](t)},this}}();
+    </script>
+    <style>
+      /*video and image combine slider by lincoln mahmud*/
+*{padding:0;margin:0;-webkit-user-select:none;-ms-user-select:none;user-select:none}#container{width:300px;height:250px;top:0;left:0;perspective:1500px;overflow:hidden;cursor:pointer;background-color:#6a807c}.slide{overflow:hidden}.slide img{position:absolute;top:0;left:0}.slide .right_woman{left:46px}.slide .left_man{left:auto;right:25px}.navigation{display:none}.controls{top:27%!important;opacity:0}#invis{width:300px;height:200px;background-color:brown;position:absolute;top:0;opacity:0}#video{width:300px;height:250px;left:0;position:relative}.video-controls{top:-35px;position:relative;padding-left:5px;padding-right:5px}.sound{float:right;background:0 0;color:#fff;border:none;outline:0}.toggle{background:0 0;color:#fff;border:none;outline:0}
+    </style>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body>
+    <div id="container">
+      <div class="cube_templete">
+          <div id="link1" class="slide">
+              <div id="video-player" class="video-wrapper">
+                  <video id="video" playsinline autoplay muted playsinline>
+                      <source src="video-hero.mp4" type="video/mp4">
+                  </video>
+                  <div class="video-controls">
+                      <button id="toggle" class="btn toggle"><i class="material-icons">play_arrow</i></button>
+                      <button id="sound" class="btn sound"><i class="material-icons">volume_off</i></button>
+                  </div>
+              </div>
+              <a href="{CLICK_MACRO}" target="_blank">
+                  <div id="invis"></div>
+              </a>                
+          </div>  
+          <div id="link2" class="slide">
+              <a href="{CLICK_MACRO}" target="_blank">
+                  <img src="1.jpg" alt="">
+              </a>
+          </div>                        
+      </div>
+    </div>
+    <script>
+/* Info Station ad engine */
+
+$('.cube_templete').lMCarousel({});
+
+var player = document.querySelector('#video-player');
+var video = player.querySelector('#video');
+var toggle = player.querySelector('#toggle');
+var sound = player.querySelector('#sound');
+
+var playIcon = `<i class="material-icons">play_arrow</i>`;
+var pauseIcon = `<i class="material-icons">pause</i>`;
+var volumeUp = `<i class="material-icons">volume_up</i>`;
+var volumeOff = `<i class="material-icons">volume_off</i>`;
+var replayIcon = `<i class="material-icons">replay</i>`;
+
+function togglePlay(e) {
+    e.stopPropagation();
+    var playOrPause = video.paused ? 'play' : 'pause';
+    video[playOrPause]();
+}
+
+function updatePlayPause(e) {
+    e.stopPropagation();
+    var playPauseIcon = this.paused ? playIcon : pauseIcon;             
+    toggle.innerHTML = playPauseIcon;
+}
+
+function toggleSound(e) {
+    e.stopPropagation();
+    var soundIcon = video.muted ? volumeUp : volumeOff;
+    sound.innerHTML = soundIcon;
+
+    if (video.muted) video.muted = false;
+    else video.muted = true;
+}
+
+video.addEventListener('play', updatePlayPause);
+video.addEventListener('pause', updatePlayPause);
+toggle.addEventListener('click', togglePlay);
+sound.addEventListener('click', toggleSound);
+
+    </script>
+  </body>
+</html>
