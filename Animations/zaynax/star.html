@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>zaynaxhealth interactive campaign by info station </title>
+	<style>
+		*{margin:0;padding:0;user-select:none}.istation_wrapper{width:300px;height:250px;position:relative}.common_slide .bglogo{top:0;left:0}.slide_1 .patient{left:1px;bottom:40px;width:155px;height:144px}.slide_1 .health-text{right:27px;top:80px;width:117px;height:16px}.slide_1 .call-button{right:20px;bottom:100px;width:137px;height:46px;cursor:pointer}.slide_1 .finger-button{right:25px;bottom:69px;width:38px;height:41px;cursor:pointer}.slide_2 .customer{left:1px;bottom:40px;width:155px;height:144px}.slide_2 .doctor,.slide_3 .doctor{right:31px;bottom:38px;width:67px;height:145px}.slide_3 .details{top:47px;left:27px;width:161px;height:115px}.slide_3 .details-text{left:37px;bottom:67px;width:125px;height:13px}.slide_3 .details-number{left:25px;bottom:35px;width:161px;height:32px;cursor:pointer}.absolute{position:absolute}.hidden{display:none}@keyframes shake{10%,90%{transform:translate3d(-1px,0,0)}20%,80%{transform:translate3d(2px,0,0)}30%,50%,70%{transform:translate3d(-4px,0,0)}40%,60%{transform:translate3d(4px,0,0)}}@keyframes hideZoomOut{100%{opacity:0;transform:scale3d(.3,.3,.3)}}@keyframes showZoomIn{from{opacity:0;transform:scale3d(.3,.3,.3)}to{opacity:1;transform:scale3d(1,1,1)}}.hideZoomOut{animation-name:hideZoomOut;animation-duration:.5s;animation-fill-mode:both}.showZoomIn{animation-name:showZoomIn;animation-duration:.5s;animation-fill-mode:both}.shake{animation:shake 3.1s cubic-bezier(.36,.07,.19,.97) infinite;transform:translate3d(0,0,0);backface-visibility:hidden;perspective:1000px}@keyframes pulse{0%{transform:scaleX(1)}50%{transform:scale3d(.95,.95,.95)}to{transform:scaleX(1)}}.pulse{animation-name:pulse;animation-duration:1s;animation-iteration-count:infinite}
+		/*istation logo*/
+        span.__istation_logo__{position:absolute;top:0;left:0;font-family:sans-serif;font-size:11px;background-color:#82070f;z-index:9999}.__istation_logo__ img{width:18px;height:18px;vertical-align:top;padding:1px;}.__istation_logo__>a{opacity:1;text-decoration:none;color:#fff;display:block}.__istation_logo__>a>span{width:0;transform:scaleX(1);height:16px;line-height:16px;overflow:hidden;display:inline-block;transition:all .2s ease}.__istation_logo__>a:hover>span{width:auto;transform:scaleX(1)}.__istation_logo__:hover{background-color:#82070f}
+	</style>
+</head>
+<body>
+	<div class="istation_wrapper">
+		<div class="common_slide">
+			<img class="bglogo absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/bg.jpg" alt="background">
+		</div>
+
+		<div class="slide_1">
+			<img class="patient absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/patient.png" alt="patient">
+			<img class="health-text absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/health-text.png?v=1.1" alt="Health Text">
+			<img class="call-button absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/call.png?v=1.1" alt="call">
+			<img class="finger-button shake absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/finger.png" alt="finger">
+		</div>
+		<div class="slide_2 hidden">
+			<img class="customer absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/customer.png" alt="customer">
+			<img class="doctor absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/doctor.png" alt="doctor">
+		</div>
+		<div class="slide_3 hidden">
+			<img class="details absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/details.png" alt="details">
+			<img class="details-text absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/details-text.png" alt="details">
+			<a href="{CLICK_MACRO}" target="_blank"><img class="details-number absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/number.png" alt="details"></a>
+			<img class="doctor absolute" src="https://abdussukkur85.github.io/InfoStation/animations/zaynax/doctor.png" alt="doctor">
+		</div>	
+		<!-- info station branding -->
+		<span class="__istation_logo__"><a href="#"><img src="//infostation.digital/assets/landing/media/infodashlogoicon_dark.png" alt="Info Station Logo"><span>Info Station&nbsp;</span></a></span>	
+	</div>
+	<script>
+		let bindEvent=(e,o,t)=>{e.split(" ").forEach((e=>{document.addEventListener(e,(function(e){e.target.matches(o+", "+o+" *")&&t.apply(e.target.closest(o),arguments)}),!1)}))},istation_wrapper=document.querySelector(".istation_wrapper"),common_slide=document.querySelector(".common_slide"),slide_1=document.querySelector(".slide_1"),slide_2=document.querySelector(".slide_2"),slide_3=document.querySelector(".slide_3"),fingerbutton=document.querySelector(".finger-button");function second_slide(){remove_class(slide_2,"hidden"),add_class(document.querySelector(".customer"),"showZoomIn"),add_class(document.querySelector(".slide_2 .doctor"),"showZoomIn"),add_class(slide_1,"hideZoomOut"),setTimeout(third_slide,1e3)}function third_slide(){remove_class(document.querySelector(".customer"),"showZoomIn"),remove_class(document.querySelector(".slide_2 .doctor"),"showZoomIn"),add_class(document.querySelector(".customer"),"hideZoomOut"),add_class(document.querySelector(".slide_2 .doctor"),"hideZoomOut"),setTimeout((function(){add_class(slide_2,"hidden"),remove_class(slide_3,"hidden"),add_class(document.querySelector(".details"),"showZoomIn"),add_class(document.querySelector(".details-text"),"showZoomIn"),add_class(document.querySelector(".details-number"),"showZoomIn"),add_class(document.querySelector(".slide_3 .doctor"),"showZoomIn"),setTimeout((function(){add_class(document.querySelector(".slide_3 .details-number"),"showZoomIn"),add_class(document.querySelector(".slide_3 .details-number"),"pulse")}),100)}),500)}function remove_class(e,o){e.className=e.className.replace(o,"")}function add_class(e,o){e.classList?e.classList.add(o):e.className+=" "+o}bindEvent("click",".call-button",(function(e){e.preventDefault(),console.log("clicked"),remove_class(fingerbutton,"shake"),add_class(fingerbutton,"hideZoomOut"),add_class(document.querySelector(".call-button"),"hideZoomOut"),add_class(document.querySelector(".health-text"),"hideZoomOut"),add_class(document.querySelector(".patient"),"hideZoomOut"),setTimeout(second_slide,500)}));
+	</script>
+</body>
+</html>

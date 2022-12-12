@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDLC SIP</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;;
+        }
+        .wrapper{
+            width: 300px;
+            height: 250px;
+        }
+        .relative{
+            position: relative;
+        }
+
+        .absolute{
+            position: absolute;
+        }
+        .element_2 {
+            bottom: 10px;
+            left: 30%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            animation-duration: 1s;
+            animation-name: pulse;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes pulse {
+            from,
+            to {
+                transform: scale(0.95);
+            }
+            50% {
+                transform: scale(1.10);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <a href="https://idlc.com/" target="_blank">
+        <div class="wrapper relative">
+            <div class="element_1">
+                <img src="bg.jpg" alt="" class="bg_image">
+            </div>
+
+            <div class="element_2 absolute">
+                <img src="button.png" alt="" class="button_image">
+            </div>
+            
+        </div>
+    </a>
+</body>
+</html>

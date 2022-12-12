@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bkash Slide</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}.animate__animated{animation-duration:1s;animation-fill-mode:both}.hidden{display:none}.istation_wrapper_bg{width:300px;height:250px;position:relative}.istation .logo_img{position:absolute;top:-3px;right:-6px}.istation .tap_image{cursor:pointer;position:absolute;bottom:20px;margin:0 auto;left:0;right:0}.coin_image{z-index:-1}.savings-button:hover{cursor:pointer}@keyframes pulse{0%,to{transform:scaleX(1)}50%{transform:scale3d(1.05,1.05,1.05)}}.animate__pulse{animation-name:pulse;animation-timing-function:ease-in-out}@keyframes slideInDown{0%{transform:translate3d(0,-100%,0);visibility:visible}to{transform:translateZ(0)}}.animate__slideInDown{animation-name:slideInDown}@keyframes slideInUp{0%{transform:translate3d(0,100%,0);visibility:visible}to{transform:translateZ(0)}}.animate__slideInUp{animation-name:slideInUp}@keyframes fadeOut{0%{opacity:1}to{opacity:0}}.animate__fadeOut{animation-name:fadeOut}img.button_img{margin-left:2px;margin-top:3px}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}.animate__fadeIn{-webkit-animation-name:fadeIn;animation-name:fadeIn}.button_img,.button_slide_img{animation-duration:1s;animation-name:pulse;animation-iteration-count:infinite;position:absolute;top:27%;left:30%;transform:translate(-50%,-50%)}@keyframes pulse{from,to{transform:scale(.95)}50%{transform:scale(1)}}
+    </style>
+</head>
+<body>
+    <div class="istation_wrapper">
+        <div class="istation_wrapper_bg istation">
+            <div class="slide">
+                <img src="coin.png" class="animate__animated animate__slideInDown coin_image hidden">
+                <img src="logo.png" class="animate__animated animate__pulse logo_img">
+                <div class="first_slide_main animate__animated ">
+                    <div class="savings-button tap">
+                        <img src="button.png" class="button_img animate__animated animate__fadeIn">
+                        <img src="button-side.png" class="button_slide_img animate__animated animate__fadeIn">
+                    </div>
+                    <img src="tap.png" class="animate__animated animate__slideInUp tap_image tap">
+                </div>
+            </div>
+            <img src="slide-3.jpg" class="animate__animated animate__fadeIn hidden slide3_image">
+        </div>
+    </div>
+
+    <script>
+        let slide = document.querySelector(".slide");
+        let firstSlideMain = document.querySelector(".first_slide_main");
+        let tapImage = document.querySelector(".tap_image");
+        let savingsButton = document.querySelector(".savings-button");
+        let coinImg = document.querySelector(".coin_image");
+        let slide3Img = document.querySelector(".slide3_image");
+
+        document.querySelectorAll('.tap').forEach(item => {
+            item.addEventListener('click', event => {
+                    add_class(firstSlideMain, 'animate__fadeOut');
+            
+                setTimeout(function(){
+                    remove_class(coinImg, 'hidden');
+                    setTimeout(function(){
+                        add_class(slide, 'hidden')
+                        remove_class(slide3Img,'hidden');
+                    },2000);
+                },1500);
+            })
+        })
+        
+        /*add and remove class function*/
+        function remove_class(element, classname,newclass='') {
+            element.className = element.className.replace(classname, newclass);
+        }
+        function add_class(element, classname) {
+            element.classList ? element.classList.add(classname) : element.className += (' ' + classname);
+        }
+    </script>
+</body>
+</html>
